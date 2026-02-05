@@ -1,0 +1,117 @@
+.why-us-section {
+    padding: 100px 0;
+    background: transparent; /* Fondo transparente */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Eliminamos patrones y círculos animados */
+.why-us-section::before,
+.why-us-section::after {
+    display: none;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+.why-us-header {
+    text-align: center;
+    margin-bottom: 70px;
+    color: #333; /* Color oscuro para legibilidad */
+}
+
+.why-us-header h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #333;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+}
+
+.why-us-header p {
+    font-size: 1.2rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.feature-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 50px 35px;
+    background: #ffffff; /* Fondo blanco para que resalte el brillo */
+    border-radius: 24px;
+    
+    /* BORDE Y RESPLANDOR 009643 */
+    border: 2px solid #009643;
+    box-shadow: 0 0 20px rgba(0, 150, 67, 0.4); /* Resplandor suave */
+    
+    transition: none; /* Estático, sin movimiento */
+}
+
+/* Eliminamos el brillo que se movía (::before) */
+.feature-card::before {
+    display: none;
+}
+
+.feature-icon {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #009643;
+    border-radius: 50%;
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+/* Eliminamos el anillo pulsante */
+.feature-icon::after {
+    display: none;
+}
+
+.feature-card h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.feature-card p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #555;
+    margin: 0;
+}
+
+/* Quitamos efectos de hover */
+.feature-card:hover {
+    transform: none;
+    background: #ffffff;
+}
+
+.feature-card:hover .feature-icon {
+    transform: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .why-us-header h2 {
+        font-size: 2.2rem;
+    }
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+}

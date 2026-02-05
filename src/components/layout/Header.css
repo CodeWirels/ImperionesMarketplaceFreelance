@@ -1,0 +1,419 @@
+/* ========================================
+   HEADER PRINCIPAL
+   ======================================== */
+.header {
+    background: var(--secondary-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    min-height: 60px;
+}
+
+/* Contenedor del header - Desktop */
+.header-content {
+    max-width: 1400px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 0 40px;
+}
+
+/* Ocultar logo del nav en desktop */
+.nav-header {
+    display: none;
+}
+
+/* ========================================
+   LOGO
+   ======================================== */
+.logo {
+    color: #999;
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding: 20px 0;
+    transition: opacity 0.3s;
+    flex-shrink: 0;
+}
+
+.logo:hover {
+    color: var(--white);
+}
+
+/* ========================================
+   NAV DESKTOP
+   ======================================== */
+.nav {
+    display: flex;
+    gap: 0;
+    flex-shrink: 1;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.nav a {
+    color: #999;
+    padding: 25px 18px;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+}
+
+.nav a:hover,
+.nav a.active,
+.nav a[aria-current="page"] {
+    color: var(--white);
+    border-bottom-color: var(--primary-color);
+}
+
+/* ========================================
+   CARRITO DESKTOP
+   ======================================== */
+.cart-icon {
+    color: #999;
+    font-size: 1.3rem;
+    transition: color 0.3s;
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+.cart-icon:hover {
+    color: var(--white);
+}
+
+/* ========================================
+   HAMBURGUESA
+   ======================================== */
+.hamburger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1003;
+    flex-shrink: 0;
+}
+
+.hamburger:hover {
+    color: #999;
+}
+
+/* ========================================
+   OVERLAY ANIMACIÓN
+   ======================================== */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ========================================
+   RESPONSIVE TABLET + MOBILE
+   ======================================== */
+@media (max-width: 1320px) {
+
+    .header {
+        min-height: 60px;
+    }
+
+    /*SISTEMA DE 3 COMPARTIMIENTOS */
+    .header-content {
+        padding: 0 20px;
+        min-height: 60px;
+        display: grid;
+        grid-template-columns: 48px 1fr 48px;
+        align-items: center;
+    }
+
+    /* MOSTRAR HAMBURGUESA */
+    .hamburger {
+        display: flex;
+        position: static;
+        justify-self: start;
+    }
+
+    /* LOGO CENTRADO REAL */
+    .logo {
+        position: static;
+        transform: none;
+        font-size: 1.5rem;
+        justify-self: center;
+    }
+
+    /* CARRITO DERECHA ESTABLE */
+    .cart-icon {
+        position: static;
+        justify-self: end;
+        margin-right: 0;
+    }
+
+    /* ========================================
+       NAV LATERAL SLIDER
+       ======================================== */
+    .nav {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 300px;
+        height: 100vh;
+        background: var(--secondary-color);
+        flex-direction: column;
+        padding: 1px 10px 200px;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+        transition: left 0.3s ease;
+        z-index: 1002;
+        overflow-y: auto;
+    }
+
+    .nav.nav-open {
+        left: 0;
+    }
+
+    .nav > a {
+        color: var(--white); /*cOlOr las categorias que estan dentro del nav*/
+        padding: 16px 20px;
+        border-left: 3px solid transparent;
+        font-size: 1rem;
+        display: block;
+    }
+
+    .nav a:hover,
+    .nav a.active,
+    .nav a[aria-current="page"] {
+        border-left-color: var(--primary-color);
+        background: rgba(255,255,255,0.05);
+        border-bottom: none;
+    }
+
+    /* OVERLAY */
+    .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 888;
+        animation: fadeIn .3s ease;
+    }
+
+    /* HEADER DEL SLIDER */
+    .nav-header {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-inline: clamp(16px, 6vw, 40px);
+        margin-bottom: 10px;
+        border-bottom: 1px solid rgba(255,255,255,.1);
+        position: relative;
+        z-index: 1000;
+    }
+
+    .nav-logo {
+        color: #fff;
+        transform: scale(1.3);/*HACE EL LOGO MAS GRANDE, EL LO DENTRO DEL NAV*/
+        font-weight: 800;
+        line-height: 1;
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        top: 7px;
+    }
+
+    .nav-header .close-btn {
+        position: absolute;
+        right: clamp(10px, 3vw, 20px);
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.8rem;
+        cursor: pointer;
+        line-height: 1;
+    }
+
+    .header-content.menu-active {
+    pointer-events: none;
+}
+
+.header-content.menu-active .nav,
+.header-content.menu-active .hamburger {
+    pointer-events: auto;
+}
+
+
+    
+
+    /* MOBILE PEQUEÑO */
+    @media (max-width: 480px) {
+        .nav {
+            width: 280px;
+            left: -280px;
+        }
+    }
+
+    @media (max-width: 375px) {
+        .nav {
+            width: 100%;
+            max-width: 280px;
+            left: -280px;
+        }
+    }
+}
+
+/* ========================================
+   MOBILE EXTRA PEQUEÑO
+   ======================================== */
+@media (max-width: 400px) {
+
+    .logo span {
+        display: none;
+    }
+
+    .logo {
+        font-size: 1.6rem;
+        padding: 16px 0;
+    }
+
+    .cart-icon {
+        font-size: 1.2rem;
+    }
+}
+
+/* ========================================
+   DESKTOP CLEANUP
+   ======================================== */
+@media (min-width: 1321px) {
+    .hamburger {
+        display: none;
+    }
+
+    .overlay {
+        display: none !important;
+    }
+}
+
+/* ========================================
+   SCROLLBAR SLIDER
+   ======================================== */
+.nav::-webkit-scrollbar {
+    width: 6px;
+}
+
+.nav::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,.3);
+    border-radius: 3px;
+}
+
+.nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,.5);
+}
+
+/* ========================================
+   BOTÓN LOGIN/USER MENU
+   ======================================== */
+.btn-login {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--primary-color);
+    color: var(--white);
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s;
+    flex-shrink: 0;
+}
+
+.btn-login:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* User menu */
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-name {
+    color: var(--white);
+    font-weight: 600;
+}
+
+.btn-logout {
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.btn-logout:hover {
+    opacity: 0.7;
+}
+
+/* ========================================
+   RESPONSIVE LOGIN BUTTON
+   ======================================== */
+@media (max-width: 1320px) {
+    .btn-login {
+        position: fixed;
+        right: 70px; /* Al lado del carrito */
+        top: 18px;
+        z-index: 1003;
+        padding: 10px 16px;
+    }
+
+    .user-menu {
+        position: fixed;
+        right: 70px;
+        top: 18px;
+        z-index: 1003;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Ocultar texto, solo ícono */
+    .login-text {
+        display: none;
+    }
+
+    .user-name {
+        display: none;
+    }
+
+    .btn-login {
+        padding: 10px;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+    }
+
+    .btn-login i {
+        margin: 0;
+    }
+}
+
+@media (max-width: 350px) {
+    /* Ocultar carrito, solo login */
+    .cart-icon {
+        display: none !important;
+    }
+
+    .btn-login {
+        right: 20px;
+    }
+
+    .user-menu {
+        right: 20px;
+    }
+}
