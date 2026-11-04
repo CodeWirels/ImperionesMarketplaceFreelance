@@ -1,10 +1,9 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_URL = 'https://portafolio2-verhcks-projects.vercel.app';
 
-// Configurar axios CON /api en la baseURL
 const api = axios.create({
-    baseURL: `${API_URL}/api`,  // ← AGREGA /api AQUÍ
+    baseURL: `${API_URL}/api`,
     headers: {
         'Content-Type': 'application/json'
     }
